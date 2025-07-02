@@ -1,4 +1,3 @@
 # RideMe
 
-Create folder named "assets" in your directory for running the code for the program to read the logo.
-Put the logo in the "assets" folder
+Place the "Assets" foler in your working directory for the code to read the necessary icons and images

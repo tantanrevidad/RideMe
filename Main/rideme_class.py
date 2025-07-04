@@ -1,12 +1,11 @@
-from datetime import datetime, timedelta  # para sa time and date handling like booking time, eta, etc
-import random  # para sa random driver name/plate generation
-import time  # para sa simulation ng ride progress (may time.sleep)
+from datetime import datetime, timedelta  
+import random 
+import time  
 
 # ==== VEHICLE CLASSES ====
 
 class Vehicle:
     def __init__(self, vehicle_id, cost_per_mile, capacity, speed=1.0):
-        # eto yung base class ng lahat ng vehicle, parang general template nila
         self.vehicle_id = vehicle_id
         self.cost_per_mile = cost_per_mile  # magkano kada km/mile
         self.capacity = capacity  # ilan pwede sakay
@@ -39,29 +38,24 @@ class Vehicle:
 
 class Motorcycle(Vehicle):
     def __init__(self, vehicle_id):
-        # mas mabilis pero solo lang
         super().__init__(vehicle_id, cost_per_mile=5, capacity=1, speed=1.5)
         self.vehicle_type = "Motorcycle"
 
 class Car4Seater(Vehicle):
     def __init__(self, vehicle_id):
-        # normal na kotse pang family or barkada
         super().__init__(vehicle_id, cost_per_mile=10, capacity=4, speed=1.3)
         self.vehicle_type = "Car (4-Seater)"
 
     def calculate_cost(self, distance):
-        # may additional ₱100 pag long trip (>50km)
         return self.cost_per_mile * distance + 100 if distance > 50 else self.cost_per_mile * distance
 
 class Car6Seater(Vehicle):
     def __init__(self, vehicle_id):
-        # mas malaki, mas mahal
         super().__init__(vehicle_id, cost_per_mile=15, capacity=6, speed=1.2)
         self.vehicle_type = "Car (6-Seater)"
 
 class Truck(Vehicle):
     def __init__(self, vehicle_id):
-        # pang cargo siguro to, mabagal tapos may flat ₱200
         super().__init__(vehicle_id, cost_per_mile=25, capacity=2, speed=0.8)
         self.vehicle_type = "Truck"
 
@@ -70,7 +64,6 @@ class Truck(Vehicle):
 
 class Helicopter(Vehicle):
     def __init__(self, vehicle_id):
-        # sosyalin option! mabilis at sobrang mahal (may base cost na ₱1000)
         super().__init__(vehicle_id, cost_per_mile=150, capacity=5, speed=3.5)
         self.vehicle_type = "Helicopter"
 
@@ -79,7 +72,6 @@ class Helicopter(Vehicle):
 
 class CruiseShip(Vehicle):
     def __init__(self, vehicle_id):
-        # for long distance travel via sea maybe? madaming tao kasya
         super().__init__(vehicle_id, cost_per_mile=100, capacity=100, speed=0.5)
         self.vehicle_type = "Cruise Ship"
 
@@ -89,7 +81,6 @@ class CruiseShip(Vehicle):
 
 class UFO(Vehicle):
     def __init__(self, vehicle_id):
-        # eto yung alien option. pinakamahal, pinakamabilis
         super().__init__(vehicle_id, cost_per_mile=300, capacity=3, speed=5.0)
         self.vehicle_type = "UFO"
 
